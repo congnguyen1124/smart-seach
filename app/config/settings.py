@@ -17,7 +17,7 @@ class Settings:
     embedding_provider: str = "hashing"
     embedding_model: str = "hashing-demo-v1"
     embedding_dimension: int = 768
-    default_search_threshold: float = 0.15
+    default_search_threshold: float = 0.40
     default_search_limit: int = 10
     max_search_limit: int = 50
     search_candidate_multiplier: int = 5
@@ -60,7 +60,7 @@ class Settings:
             embedding_model=os.getenv("EMBEDDING_MODEL", "hashing-demo-v1"),
             embedding_dimension=int(os.getenv("EMBEDDING_DIMENSION", "768")),
             default_search_threshold=float(
-                os.getenv("DEFAULT_SEARCH_THRESHOLD", "0.15")
+                os.getenv("DEFAULT_SEARCH_THRESHOLD", "0.40")
             ),
             default_search_limit=int(os.getenv("DEFAULT_SEARCH_LIMIT", "10")),
             max_search_limit=int(os.getenv("MAX_SEARCH_LIMIT", "50")),

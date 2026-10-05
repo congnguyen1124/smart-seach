@@ -11,12 +11,14 @@ class SearchRequest:
     query: str
     limit: int
     threshold: float
+    mode: str = "semantic"
 
 
 @dataclass(frozen=True, slots=True)
 class SearchResponse:
     query: str
     threshold: float
+    mode: str
     items: tuple[SearchResult, ...]
 
 

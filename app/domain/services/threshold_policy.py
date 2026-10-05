@@ -10,5 +10,5 @@ class ThresholdPolicy:
         return [
             candidate
             for candidate in candidates
-            if candidate.semantic_score >= threshold
+            if candidate.score >= threshold
         ]

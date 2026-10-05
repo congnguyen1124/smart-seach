@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Literal
 from uuid import UUID, uuid4
 
 from pydantic import BaseModel, Field, field_validator
@@ -11,6 +12,7 @@ class SearchRequestSchema(BaseModel):
     query: str = Field(min_length=1, max_length=500)
     limit: int | None = Field(default=None, ge=1)
     threshold: float | None = Field(default=None, ge=-1.0, le=1.0)
+    mode: Literal["semantic", "keyword"] = "semantic"
 
     @field_validator("query")
     @classmethod

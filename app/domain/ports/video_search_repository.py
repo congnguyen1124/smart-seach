@@ -22,3 +22,7 @@ class VideoSearchRepository(Protocol):
     def semantic_search(
         self, query_vector: list[float], candidate_limit: int
     ) -> list[SearchCandidate]: ...
+
+    def keyword_search(
+        self, query: str, candidate_limit: int
+    ) -> list[SearchCandidate]: ...

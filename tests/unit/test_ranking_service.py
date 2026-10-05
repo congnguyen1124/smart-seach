@@ -10,14 +10,13 @@ def candidate(identifier: int, score: float) -> SearchCandidate:
         title=str(identifier),
         description="",
         tags=(),
-        cosine_distance=1.0 - score,
-        semantic_score=score,
+        score=score,
     )
 
 
 def test_results_are_sorted_by_descending_score():
     ranked = RankingService().rank([candidate(1, 0.2), candidate(2, 0.9)])
-    assert [item.semantic_score for item in ranked] == [0.9, 0.2]
+    assert [item.score for item in ranked] == [0.9, 0.2]
 
 
 def test_equal_scores_have_stable_id_order():

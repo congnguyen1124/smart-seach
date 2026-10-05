@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from threading import RLock
 from uuid import UUID
@@ -63,15 +64,48 @@ class InMemoryVideoRepository:
                     title=item.video.title,
                     description=item.video.description,
                     tags=item.video.tags,
-                    cosine_distance=1.0 - score,
-                    semantic_score=score,
+                    score=score,
                 )
             )
 
         return sorted(
             candidates,
-            key=lambda candidate: (
-                candidate.cosine_distance,
-                str(candidate.video_id),
-            ),
+            key=lambda candidate: (-candidate.score, str(candidate.video_id)),
+        )[:candidate_limit]
+
+    def keyword_search(
+        self, query: str, candidate_limit: int
+    ) -> list[SearchCandidate]:
+        query_terms = set(re.findall(r"[^\W_]+", query.casefold()))
+        if not query_terms:
+            return []
+
+        with self._lock:
+            snapshot = tuple(self._items.values())
+
+        candidates: list[SearchCandidate] = []
+        for item in snapshot:
+            document = " ".join(
+                (
+                    item.video.title,
+                    item.video.description,
+                    " ".join(item.video.tags),
+                )
+            ).casefold()
+            matched_terms = sum(term in document for term in query_terms)
+            if matched_terms == 0:
+                continue
+            candidates.append(
+                SearchCandidate(
+                    video_id=item.video.id,
+                    title=item.video.title,
+                    description=item.video.description,
+                    tags=item.video.tags,
+                    score=matched_terms / len(query_terms),
+                )
+            )
+
+        return sorted(
+            candidates,
+            key=lambda candidate: (-candidate.score, str(candidate.video_id)),
         )[:candidate_limit]

@@ -7,5 +7,5 @@ class RankingService:
     def rank(self, candidates: list[SearchCandidate]) -> list[SearchCandidate]:
         return sorted(
             candidates,
-            key=lambda item: (-item.semantic_score, str(item.video_id)),
+            key=lambda item: (-item.score, str(item.video_id)),
         )

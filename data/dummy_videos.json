@@ -1,0 +1,74 @@
+[
+  {
+    "id": "11111111-1111-4111-8111-111111111111",
+    "title": "PostgreSQL pgvector Semantic Search with Docker",
+    "description": "Build a production-minded vector search pipeline with PostgreSQL, pgvector, cosine similarity, and Docker Compose.",
+    "tags": ["postgresql", "pgvector", "semantic", "search", "docker"]
+  },
+  {
+    "id": "22222222-2222-4222-8222-222222222222",
+    "title": "Optimizing pgvector Search in PostgreSQL",
+    "description": "Tune HNSW indexes and query plans for fast nearest-neighbor retrieval in a PostgreSQL database.",
+    "tags": ["postgresql", "pgvector", "search", "hnsw"]
+  },
+  {
+    "id": "33333333-3333-4333-8333-333333333333",
+    "title": "Semantic Search Fundamentals",
+    "description": "Understand how embeddings and similarity scores power semantic video discovery.",
+    "tags": ["semantic", "search", "embeddings", "vectors"]
+  },
+  {
+    "id": "44444444-4444-4444-8444-444444444444",
+    "title": "Docker Compose for PostgreSQL Development",
+    "description": "Run an API and PostgreSQL together with health checks, persistent volumes, and repeatable Docker workflows.",
+    "tags": ["docker", "postgresql", "compose", "devops"]
+  },
+  {
+    "id": "55555555-5555-4555-8555-555555555555",
+    "title": "Flutter Clean Architecture with Riverpod",
+    "description": "Organize repositories, data sources, use cases, and view models in a maintainable Flutter application.",
+    "tags": ["flutter", "riverpod", "clean-architecture", "mobile"]
+  },
+  {
+    "id": "66666666-6666-4666-8666-666666666666",
+    "title": "Designing a Flask REST API",
+    "description": "Build versioned endpoints, validate requests, map application use cases, and return consistent JSON responses.",
+    "tags": ["python", "flask", "rest-api", "backend"]
+  },
+  {
+    "id": "77777777-7777-4777-8777-777777777777",
+    "title": "TypeScript Search Interface from Scratch",
+    "description": "Create an accessible search experience with typed responses, responsive result cards, and useful loading states.",
+    "tags": ["typescript", "frontend", "search", "accessibility"]
+  },
+  {
+    "id": "88888888-8888-4888-8888-888888888888",
+    "title": "Understanding Text Embeddings",
+    "description": "Learn how sentences become dense vectors and how normalized embeddings improve similarity comparisons.",
+    "tags": ["machine-learning", "embeddings", "vectors", "nlp"]
+  },
+  {
+    "id": "99999999-9999-4999-8999-999999999999",
+    "title": "Testing Python Applications in Containers",
+    "description": "Use pytest and containers to verify API behavior, database integration, and persistence across restarts.",
+    "tags": ["python", "pytest", "containers", "testing"]
+  },
+  {
+    "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "title": "Kotlin Coroutines for Android Apps",
+    "description": "Structure asynchronous tasks, cancellation, flows, and lifecycle-aware data loading on Android.",
+    "tags": ["kotlin", "android", "coroutines", "mobile"]
+  },
+  {
+    "id": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "title": "A Weekend Food Guide to Bangkok",
+    "description": "Explore markets, street food, coffee shops, and regional Thai dishes across Bangkok neighborhoods.",
+    "tags": ["bangkok", "travel", "food", "thailand"]
+  },
+  {
+    "id": "cccccccc-cccc-4ccc-8ccc-cccccccccccc",
+    "title": "Cooking Traditional Vietnamese Pho",
+    "description": "Prepare a clear aromatic broth, select rice noodles, and balance herbs for a classic bowl of pho.",
+    "tags": ["vietnamese", "cooking", "pho", "food"]
+  }
+]

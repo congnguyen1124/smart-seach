@@ -35,13 +35,19 @@ def search():
         else settings.default_search_threshold
     )
     result = dependencies["search_use_case"].execute(
-        SearchRequest(query=payload.query, limit=limit, threshold=threshold)
+        SearchRequest(
+            query=payload.query,
+            limit=limit,
+            threshold=threshold,
+            mode=payload.mode,
+        )
     )
 
     return jsonify(
         {
             "query": result.query,
             "threshold": result.threshold,
+            "mode": result.mode,
             "count": len(result.items),
             "items": [
                 {

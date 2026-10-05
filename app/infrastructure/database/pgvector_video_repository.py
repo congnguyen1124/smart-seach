@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from collections.abc import Iterator
 from contextlib import contextmanager
 from uuid import UUID
@@ -147,8 +148,63 @@ class PgVectorVideoRepository:
                 title=row["title"],
                 description=row["description"] or "",
                 tags=tuple(row["tags"] or ()),
-                cosine_distance=float(row["cosine_distance"]),
-                semantic_score=1.0 - float(row["cosine_distance"]),
+                score=1.0 - float(row["cosine_distance"]),
+            )
+            for row in rows
+        ]
+
+    def keyword_search(
+        self, query: str, candidate_limit: int
+    ) -> list[SearchCandidate]:
+        query_terms = sorted(set(re.findall(r"[^\W_]+", query.casefold())))
+        if not query_terms:
+            return []
+
+        with self._connection() as connection:
+            rows = connection.execute(
+                """
+                WITH query_terms AS (
+                    SELECT UNNEST(%s::text[]) AS term
+                ), ranked AS (
+                    SELECT
+                        video.id,
+                        video.title,
+                        video.description,
+                        video.tags,
+                        SUM(
+                            CASE
+                                WHEN STRPOS(
+                                    LOWER(CONCAT_WS(
+                                        ' ',
+                                        video.title,
+                                        video.description,
+                                        ARRAY_TO_STRING(video.tags, ' ')
+                                    )),
+                                    query_terms.term
+                                ) > 0 THEN 1
+                                ELSE 0
+                            END
+                        )::double precision / COUNT(*) AS score
+                    FROM videos AS video
+                    CROSS JOIN query_terms
+                    GROUP BY video.id, video.title, video.description, video.tags
+                )
+                SELECT id, title, description, tags, score
+                FROM ranked
+                WHERE score > 0
+                ORDER BY score DESC, id
+                LIMIT %s
+                """,
+                (query_terms, candidate_limit),
+            ).fetchall()
+
+        return [
+            SearchCandidate(
+                video_id=row["id"],
+                title=row["title"],
+                description=row["description"] or "",
+                tags=tuple(row["tags"] or ()),
+                score=float(row["score"]),
             )
             for row in rows
         ]

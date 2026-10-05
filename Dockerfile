@@ -20,6 +20,8 @@ RUN addgroup --system app && \
     adduser --system --ingroup app --home /home/app app
 
 COPY --chown=app:app app ./app
+COPY --chown=app:app data ./data
+COPY --chown=app:app scripts ./scripts
 COPY --chown=app:app wsgi.py ./wsgi.py
 
 USER app

@@ -1,4 +1,4 @@
-# Smart Video Semantic Search — Architecture
+# Smart Video Search — Architecture
 
 ## 1. Goal
 
@@ -6,7 +6,7 @@ This document defines the architecture for a **demo-level Smart Search backend**
 
 - Flask REST API
 - Text embedding generation
-- Semantic vector search
+- Keyword and semantic vector search
 - Ranking and threshold filtering
 - PostgreSQL + pgvector
 
@@ -26,9 +26,9 @@ The demo intentionally excludes authentication, Redis, background workers, messa
 
 1. Index a video into PostgreSQL.
 2. Convert video text into an embedding vector.
-3. Convert a user query into an embedding vector.
-4. Search the nearest vectors using pgvector.
-5. Calculate semantic similarity.
+3. Search by keyword coverage, or convert a user query into an embedding vector.
+4. Search metadata terms or the nearest vectors using pgvector.
+5. Calculate a normalized keyword or semantic similarity score.
 6. Rank candidates by score.
 7. Remove results below a configured threshold.
 8. Return the top matching videos through Flask API.
@@ -41,7 +41,7 @@ The demo intentionally excludes authentication, Redis, background workers, messa
 - Kafka / RabbitMQ
 - Celery
 - Elasticsearch / OpenSearch
-- Hybrid keyword search
+- PostgreSQL full-text search indexes
 - Cross-encoder reranking
 - Personalization
 - Analytics
@@ -59,16 +59,19 @@ flowchart LR
 
     API --> UC[Search Use Case]
 
-    UC --> EMB[Embedding Service]
-    EMB --> MODEL[Sentence Transformer Model]
+    UC --> MODE{Search Mode}
 
-    UC --> SEARCH[Semantic Search Service]
+    MODE -->|semantic| EMB[Embedding Service]
+    EMB --> MODEL[Sentence Transformer Model]
+    EMB --> SEARCH[Semantic Search Service]
+
+    MODE -->|keyword| KEYWORD[Keyword Coverage Search]
     SEARCH --> REPO[Video Vector Repository]
+    KEYWORD --> REPO
     REPO --> PG[(PostgreSQL + pgvector)]
 
     PG --> REPO
-    REPO --> SEARCH
-    SEARCH --> RANK[Ranking Service]
+    REPO --> RANK[Ranking Service]
 
     RANK --> FILTER[Threshold Filter + Top K]
     FILTER --> UC
@@ -84,7 +87,7 @@ The logical layers are:
 API
   -> Application / Use Case
       -> Embedding
-      -> Semantic Search
+      -> Keyword / Semantic Search
       -> Ranking
       -> Persistence
 ```
@@ -98,6 +101,20 @@ Flask API
   -> Similarity Score
   -> Ranking
   -> Threshold Filter
+  -> Top K
+  -> API Response
+```
+
+Keyword mode follows the same domain contracts without generating a query
+embedding:
+
+```text
+Flask API
+  -> Extract Unique Query Terms
+  -> PostgreSQL Metadata Coverage Search
+  -> Keyword Coverage Score
+  -> Ranking
+  -> Enforced 40% Minimum Threshold
   -> Top K
   -> API Response
 ```
@@ -116,6 +133,7 @@ Content-Type: application/json
 ```json
 {
   "query": "flutter clean architecture with riverpod",
+  "mode": "semantic",
   "limit": 10,
   "threshold": 0.70
 }

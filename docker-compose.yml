@@ -1,12 +1,30 @@
+x-api-build: &api-build
+  context: .
+  args:
+    INSTALL_ML: ${INSTALL_ML}
+
+x-api-environment: &api-environment
+  APP_ENV: ${APP_ENV}
+  STORAGE_BACKEND: ${STORAGE_BACKEND}
+  DATABASE_URL: ${DATABASE_URL}
+  DATABASE_CONNECT_TIMEOUT_SECONDS: ${DATABASE_CONNECT_TIMEOUT_SECONDS}
+  EMBEDDING_PROVIDER: ${EMBEDDING_PROVIDER}
+  EMBEDDING_MODEL: ${EMBEDDING_MODEL}
+  EMBEDDING_DIMENSION: ${EMBEDDING_DIMENSION}
+  DEFAULT_SEARCH_THRESHOLD: ${DEFAULT_SEARCH_THRESHOLD}
+  DEFAULT_SEARCH_LIMIT: ${DEFAULT_SEARCH_LIMIT}
+  MAX_SEARCH_LIMIT: ${MAX_SEARCH_LIMIT}
+  SEARCH_CANDIDATE_MULTIPLIER: ${SEARCH_CANDIDATE_MULTIPLIER}
+
 services:
   db:
     image: pgvector/pgvector:0.8.6-pg17-bookworm
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-smart_search}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-smart_search}
-      POSTGRES_DB: ${POSTGRES_DB:-smart_search}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
-      - "${POSTGRES_PORT:-5432}:5432"
+      - "${POSTGRES_PORT}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./migrations/001_init.sql:/docker-entrypoint-initdb.d/001_init.sql:ro
@@ -20,30 +38,47 @@ services:
       start_period: 5s
     restart: unless-stopped
 
-  api:
-    build:
-      context: .
-      args:
-        INSTALL_ML: ${INSTALL_ML:-false}
+  seed:
+    build: *api-build
     image: smart-video-search-api:local
-    ports:
-      - "${API_PORT:-8000}:8000"
-    environment:
-      APP_ENV: ${APP_ENV:-development}
-      STORAGE_BACKEND: postgres
-      DATABASE_URL: postgresql://${POSTGRES_USER:-smart_search}:${POSTGRES_PASSWORD:-smart_search}@db:5432/${POSTGRES_DB:-smart_search}
-      DATABASE_CONNECT_TIMEOUT_SECONDS: ${DATABASE_CONNECT_TIMEOUT_SECONDS:-5}
-      EMBEDDING_PROVIDER: ${EMBEDDING_PROVIDER:-hashing}
-      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-hashing-demo-v1}
-      EMBEDDING_DIMENSION: ${EMBEDDING_DIMENSION:-768}
-      DEFAULT_SEARCH_THRESHOLD: ${DEFAULT_SEARCH_THRESHOLD:-0.15}
-      DEFAULT_SEARCH_LIMIT: ${DEFAULT_SEARCH_LIMIT:-10}
-      MAX_SEARCH_LIMIT: ${MAX_SEARCH_LIMIT:-50}
-      SEARCH_CANDIDATE_MULTIPLIER: ${SEARCH_CANDIDATE_MULTIPLIER:-5}
+    environment: *api-environment
+    command: ["python", "scripts/seed_dummy_data.py", "data/dummy_videos.json"]
     depends_on:
       db:
         condition: service_healthy
+    restart: "no"
+
+  api:
+    build: *api-build
+    image: smart-video-search-api:local
+    ports:
+      - "${API_PORT}:8000"
+    environment: *api-environment
+    depends_on:
+      db:
+        condition: service_healthy
+      seed:
+        condition: service_completed_successfully
     init: true
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./web
+    image: smart-video-search-web:local
+    ports:
+      - "${WEB_PORT}:3000"
+    environment:
+      API_INTERNAL_URL: ${API_INTERNAL_URL}
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:3000/ >/dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
     restart: unless-stopped
 
   integration-test:
@@ -53,7 +88,7 @@ services:
       context: .
       target: test
     environment:
-      TEST_DATABASE_URL: postgresql://${POSTGRES_USER:-smart_search}:${POSTGRES_PASSWORD:-smart_search}@db:5432/${POSTGRES_DB:-smart_search}
+      TEST_DATABASE_URL: ${DATABASE_URL}
     depends_on:
       db:
         condition: service_healthy

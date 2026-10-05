@@ -10,8 +10,7 @@ def candidate(score: float) -> SearchCandidate:
         title="video",
         description="",
         tags=(),
-        cosine_distance=1.0 - score,
-        semantic_score=score,
+        score=score,
     )
 
 

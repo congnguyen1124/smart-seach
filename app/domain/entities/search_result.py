@@ -10,8 +10,7 @@ class SearchCandidate:
     title: str
     description: str
     tags: tuple[str, ...]
-    cosine_distance: float
-    semantic_score: float
+    score: float
 
 
 @dataclass(frozen=True, slots=True)
