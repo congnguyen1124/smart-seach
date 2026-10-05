@@ -1,4 +1,25 @@
 services:
+  db:
+    image: pgvector/pgvector:0.8.6-pg17-bookworm
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-smart_search}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-smart_search}
+      POSTGRES_DB: ${POSTGRES_DB:-smart_search}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./migrations/001_init.sql:/docker-entrypoint-initdb.d/001_init.sql:ro
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}" && psql -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}" -c 'SELECT 1 FROM video_embeddings LIMIT 0' >/dev/null
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 5s
+    restart: unless-stopped
+
   api:
     build:
       context: .
@@ -9,12 +30,35 @@ services:
       - "${API_PORT:-8000}:8000"
     environment:
       APP_ENV: ${APP_ENV:-development}
+      STORAGE_BACKEND: postgres
+      DATABASE_URL: postgresql://${POSTGRES_USER:-smart_search}:${POSTGRES_PASSWORD:-smart_search}@db:5432/${POSTGRES_DB:-smart_search}
+      DATABASE_CONNECT_TIMEOUT_SECONDS: ${DATABASE_CONNECT_TIMEOUT_SECONDS:-5}
       EMBEDDING_PROVIDER: ${EMBEDDING_PROVIDER:-hashing}
       EMBEDDING_MODEL: ${EMBEDDING_MODEL:-hashing-demo-v1}
-      EMBEDDING_DIMENSION: ${EMBEDDING_DIMENSION:-384}
+      EMBEDDING_DIMENSION: ${EMBEDDING_DIMENSION:-768}
       DEFAULT_SEARCH_THRESHOLD: ${DEFAULT_SEARCH_THRESHOLD:-0.15}
       DEFAULT_SEARCH_LIMIT: ${DEFAULT_SEARCH_LIMIT:-10}
       MAX_SEARCH_LIMIT: ${MAX_SEARCH_LIMIT:-50}
       SEARCH_CANDIDATE_MULTIPLIER: ${SEARCH_CANDIDATE_MULTIPLIER:-5}
+    depends_on:
+      db:
+        condition: service_healthy
     init: true
     restart: unless-stopped
+
+  integration-test:
+    profiles:
+      - test
+    build:
+      context: .
+      target: test
+    environment:
+      TEST_DATABASE_URL: postgresql://${POSTGRES_USER:-smart_search}:${POSTGRES_PASSWORD:-smart_search}@db:5432/${POSTGRES_DB:-smart_search}
+    depends_on:
+      db:
+        condition: service_healthy
+    command: ["pytest", "-q"]
+    restart: "no"
+
+volumes:
+  postgres_data:

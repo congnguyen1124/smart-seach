@@ -11,6 +11,8 @@ def client():
     app = create_app(
         Settings(
             app_env="test",
+            storage_backend="memory",
+            database_url=None,
             embedding_dimension=64,
             default_search_threshold=0.0,
         )

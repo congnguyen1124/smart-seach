@@ -4,24 +4,25 @@ Demo backend tìm kiếm video theo kiến trúc trong [architecture.md](archite
 
 ![Docker architecture](docker_architechture.png)
 
-## Trạng thái hiện tại
+## Kiến trúc runtime
 
-Luồng API đã chạy đầy đủ nhưng **chưa kết nối SQL**, đúng với phạm vi triển khai hiện tại:
+Luồng API đã kết nối PostgreSQL + pgvector thật:
 
 ```text
 HTTP API
   -> application use case
   -> embedding provider
-  -> in-memory vector repository
+  -> PostgreSQL + pgvector repository
   -> ranking
   -> threshold
   -> JSON response
 ```
 
-- Dữ liệu index đang nằm trong bộ nhớ và mất khi container restart.
-- `HashingEmbeddingProvider` là adapter mặc định, nhẹ và không cần tải model. Nó phù hợp để kiểm tra luồng kỹ thuật, không thay thế một model semantic đã huấn luyện.
-- `SentenceTransformerEmbeddingProvider` đã được tách thành adapter tùy chọn.
-- `VideoSearchRepository` là port để thay adapter in-memory bằng PostgreSQL + pgvector ở bước tiếp theo mà không đổi API/use case.
+- Video metadata nằm trong bảng `videos`; vector nằm trong `video_embeddings` với `VECTOR(768)`.
+- Truy vấn dùng cosine distance (`<=>`) và HNSW index `vector_cosine_ops`.
+- Dữ liệu được giữ trong named volume `postgres_data` khi API hoặc database container restart.
+- `HashingEmbeddingProvider` vẫn là adapter mặc định, nhẹ và không cần tải model. Nó phù hợp để kiểm tra luồng kỹ thuật; `SentenceTransformerEmbeddingProvider` có thể bật riêng khi cần semantic model thật.
+- Adapter in-memory chỉ còn dùng cho unit/integration test không cần database.
 
 ## Chạy bằng Docker
 
@@ -37,11 +38,19 @@ Kết quả health check:
 
 ```json
 {
+  "embedding_dimension": 768,
+  "embedding_provider": "hashing",
   "status": "ok",
-  "storage": "in-memory",
-  "embedding_provider": "hashing"
+  "storage": "postgresql+pgvector"
 }
 ```
+
+Compose khởi động hai service:
+
+- `db`: `pgvector/pgvector:0.8.6-pg17-bookworm`, publish cổng `5432`.
+- `api`: Gunicorn/Flask, chỉ khởi động sau khi database và schema healthy.
+
+Migration [migrations/001_init.sql](migrations/001_init.sql) tự chạy khi volume PostgreSQL được tạo lần đầu.
 
 Dừng ứng dụng:
 
@@ -49,10 +58,16 @@ Dừng ứng dụng:
 docker compose down
 ```
 
+Lệnh này giữ lại database volume. Chỉ dùng lệnh sau khi thực sự muốn xóa toàn bộ dữ liệu local:
+
+```bash
+docker compose down --volumes
+```
+
 Có thể đổi cổng host mà không sửa Compose:
 
 ```bash
-API_PORT=8080 docker compose up --build -d
+API_PORT=8080 POSTGRES_PORT=5433 docker compose up --build -d
 ```
 
 ## Thử luồng index và search
@@ -99,6 +114,14 @@ pip install -r requirements-dev.txt
 pytest
 ```
 
+Chạy test đầy đủ với PostgreSQL + pgvector thật trong Compose:
+
+```bash
+docker compose --profile test run --rm integration-test
+```
+
+Test database xác nhận dữ liệu được đọc lại từ một application instance mới, thay vì vô tình dùng state trong memory.
+
 ## Sentence Transformers (tùy chọn)
 
 Cài dependencies ML:
@@ -121,7 +144,7 @@ EMBEDDING_DIMENSION=768
 INSTALL_ML=true docker compose build
 ```
 
-Model sẽ được tải ở lần khởi động đầu tiên. Cấu hình mặc định không bật chế độ này để image nhỏ và quá trình Docker smoke test có thể lặp lại nhanh.
+Model sẽ được tải ở lần khởi động đầu tiên. Cấu hình mặc định không bật chế độ này để image nhỏ và quá trình Docker smoke test có thể lặp lại nhanh. Model thay thế phải sinh đúng 768 chiều; đổi dimension yêu cầu migration cột vector và tạo lại HNSW index.
 
 ## API
 
@@ -132,8 +155,11 @@ Model sẽ được tải ở lần khởi động đầu tiên. Cấu hình m�
 | `GET` | `/api/v1/videos/{video_id}` | Đọc video trong runtime hiện tại |
 | `POST` | `/api/v1/search` | Vector search, ranking, threshold và top K |
 
-Các biến cấu hình được mô tả trong [.env.example](.env.example). `docker-compose.yml` đọc trực tiếp biến môi trường shell và có giá trị mặc định an toàn.
+Các biến cấu hình được mô tả trong [.env.example](.env.example). Giá trị user/password mặc định chỉ dành cho máy phát triển; hãy thay bằng secret phù hợp khi triển khai ra môi trường dùng chung.
 
-## Bước PostgreSQL + pgvector tiếp theo
+Kiểm tra trực tiếp PostgreSQL:
 
-Khi triển khai SQL, cần thêm một adapter `PgVectorVideoRepository` cho port hiện có, migration tạo `videos`/`video_embeddings`, HNSW index và wiring adapter theo `DATABASE_URL`. Contract API và logic ranking/threshold không cần thay đổi.
+```bash
+docker compose exec db psql -U smart_search -d smart_search -c '\\dx vector'
+docker compose exec db psql -U smart_search -d smart_search -c '\\d+ video_embeddings'
+```

@@ -8,6 +8,11 @@ from app.domain.entities.video import Video
 
 
 class VideoSearchRepository(Protocol):
+    @property
+    def backend_name(self) -> str: ...
+
+    def health_check(self) -> None: ...
+
     def upsert(
         self, video: Video, embedding: list[float], model_name: str
     ) -> None: ...

@@ -15,8 +15,8 @@ from app.domain.ports.video_search_repository import VideoSearchRepository
 from app.domain.services.ranking_service import RankingService
 from app.domain.services.threshold_policy import ThresholdPolicy
 from app.infrastructure.embedding.provider_factory import create_embedding_provider
-from app.infrastructure.repositories.in_memory_video_repository import (
-    InMemoryVideoRepository,
+from app.infrastructure.repositories.provider_factory import (
+    create_video_repository,
 )
 
 
@@ -31,7 +31,7 @@ def create_app(
     resolved_embedding_provider = embedding_provider or create_embedding_provider(
         resolved_settings
     )
-    resolved_repository = repository or InMemoryVideoRepository()
+    resolved_repository = repository or create_video_repository(resolved_settings)
 
     search_use_case = SearchVideosUseCase(
         embedding_provider=resolved_embedding_provider,
@@ -59,11 +59,21 @@ def create_app(
     app.register_blueprint(video_blueprint, url_prefix="/api/v1")
 
     @app.get("/health")
-    def health() -> tuple[dict[str, str], int]:
+    def health() -> tuple[dict[str, str | int], int]:
+        try:
+            resolved_repository.health_check()
+        except Exception:
+            return {
+                "status": "unhealthy",
+                "storage": resolved_repository.backend_name,
+                "embedding_provider": resolved_settings.embedding_provider,
+                "embedding_dimension": resolved_settings.embedding_dimension,
+            }, 503
         return {
             "status": "ok",
-            "storage": "in-memory",
+            "storage": resolved_repository.backend_name,
             "embedding_provider": resolved_settings.embedding_provider,
+            "embedding_dimension": resolved_settings.embedding_dimension,
         }, 200
 
     @app.errorhandler(ValidationError)

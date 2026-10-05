@@ -22,6 +22,13 @@ class InMemoryVideoRepository:
         self._items: dict[UUID, _IndexedVideo] = {}
         self._lock = RLock()
 
+    @property
+    def backend_name(self) -> str:
+        return "in-memory"
+
+    def health_check(self) -> None:
+        return None
+
     def upsert(
         self, video: Video, embedding: list[float], model_name: str
     ) -> None:
