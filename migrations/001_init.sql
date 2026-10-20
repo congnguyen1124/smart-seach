@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS videos (
     title TEXT NOT NULL,
     description TEXT NOT NULL DEFAULT '',
     tags TEXT[] NOT NULL DEFAULT '{}',
+    thumbnail_url TEXT NOT NULL DEFAULT '',
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );

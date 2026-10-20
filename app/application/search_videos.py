@@ -50,6 +50,7 @@ class SearchVideosUseCase:
                 description=item.description,
                 tags=item.tags,
                 score=item.score,
+                thumbnail_url=item.thumbnail_url,
             )
             for item in filtered[: request.limit]
         )

@@ -65,6 +65,7 @@ class InMemoryVideoRepository:
                     description=item.video.description,
                     tags=item.video.tags,
                     score=score,
+                    thumbnail_url=item.video.thumbnail_url,
                 )
             )
 
@@ -102,6 +103,7 @@ class InMemoryVideoRepository:
                     description=item.video.description,
                     tags=item.video.tags,
                     score=matched_terms / len(query_terms),
+                    thumbnail_url=item.video.thumbnail_url,
                 )
             )
 

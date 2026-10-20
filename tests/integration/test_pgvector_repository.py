@@ -40,6 +40,7 @@ def test_api_data_persists_across_application_instances():
                 "title": "Persistent Flutter Architecture",
                 "description": "PostgreSQL pgvector integration test",
                 "tags": ["flutter", "postgresql", "pgvector"],
+                "thumbnail_url": "https://images.unsplash.com/photo-example",
             },
         )
         assert index_response.status_code == 201
@@ -52,6 +53,9 @@ def test_api_data_persists_across_application_instances():
         assert persisted_response.status_code == 200
         assert persisted_response.get_json()["title"] == (
             "Persistent Flutter Architecture"
+        )
+        assert persisted_response.get_json()["thumbnail_url"] == (
+            "https://images.unsplash.com/photo-example"
         )
 
         search_response = second_client.post(

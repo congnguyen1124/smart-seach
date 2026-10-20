@@ -2,15 +2,21 @@
 
 A Docker-first video metadata search demo with a TypeScript web application, a Flask API, PostgreSQL, and pgvector. It supports transparent keyword ranking and semantic vector search over video titles, descriptions, and tags.
 
-![Smart Video Search website showing scored keyword results](docs/screenshots/smart-video-search-results.jpg)
+![Smart Video Search showing a free thumbnail and recent search history](docs/screenshots/smart-video-search-history-thumbnails.png)
+
+The screenshot above shows a seeded lifestyle query, its matching Unsplash
+thumbnail, transparent relevance score, and reusable recent-search history.
 
 ## What is included
 
 - A responsive TypeScript search website built with React and Vinext.
+- Recent search history stored locally for one-click repeat searches.
+- Free Unsplash thumbnails displayed with matching video results.
 - Keyword search with an explainable coverage score.
 - Semantic search backed by PostgreSQL and pgvector.
 - A Flask API organized around application, domain, and infrastructure layers.
-- An idempotent Docker seed job that inserts 12 sample videos.
+- An idempotent Docker seed job that inserts 112 sample videos across technology,
+  health, finance, family, food, travel, home, nature, arts, science, and more.
 - PostgreSQL schema initialization, persistent storage, health checks, and integration tests.
 - Environment-based configuration with local secrets kept out of Git.
 
@@ -50,9 +56,12 @@ It produces four seeded matches at `100%`, `60%`, `40%`, and `40%`.
 | `web` | TypeScript search UI and API proxy | `3000` |
 | `api` | Flask/Gunicorn REST API | `8000` |
 | `db` | PostgreSQL 17 with pgvector | `5432` |
+| `migrate` | One-shot, idempotent SQL migration runner | — |
 | `seed` | One-shot, idempotent dummy-data loader | — |
 
-The startup order is database → seed job → API → website. Docker health checks prevent dependent services from starting too early.
+The startup order is database → migrations → seed job → API → website. Docker
+health checks and completion conditions prevent dependent services from starting
+too early, including when an existing database volume needs a new column.
 
 ## Environment configuration
 
@@ -90,7 +99,11 @@ docker compose ps -a
 
 Open the website at [http://localhost:3000](http://localhost:3000). The API health endpoint is available at [http://localhost:8000/health](http://localhost:8000/health).
 
-The seed service loads [data/dummy_videos.json](data/dummy_videos.json) with [scripts/seed_dummy_data.py](scripts/seed_dummy_data.py). Video IDs are fixed and database writes use upserts, so rerunning Compose does not create duplicate records.
+The seed service loads [data/dummy_videos.json](data/dummy_videos.json) with [scripts/seed_dummy_data.py](scripts/seed_dummy_data.py). Video IDs are fixed and database writes use upserts, so rerunning Compose does not create duplicate records. Every record includes a remote Unsplash thumbnail; these images are available under the [Unsplash License](https://unsplash.com/license).
+
+The website keeps the eight most recent successful queries in browser
+`localStorage`. Selecting a recent query runs it again immediately; clearing
+browser data or using **Clear history** removes that local history.
 
 Stop the application while retaining PostgreSQL data:
 
@@ -145,7 +158,8 @@ curl -X POST http://localhost:8000/api/v1/videos/index \
     "id": "ed41e827-bf98-4457-a083-f8ac87ebee80",
     "title": "Flutter Clean Architecture with Riverpod",
     "description": "Repository, DataSource and ViewModel architecture.",
-    "tags": ["flutter", "riverpod", "architecture"]
+    "tags": ["flutter", "riverpod", "architecture"],
+    "thumbnail_url": "https://images.unsplash.com/photo-1518770660439-4636190af475"
   }'
 ```
 
@@ -160,7 +174,11 @@ curl -X POST http://localhost:8000/api/v1/videos/index \
 
 ## Database
 
-The first database startup applies [migrations/001_init.sql](migrations/001_init.sql). Metadata is stored in `videos`; 768-dimensional vectors are stored in `video_embeddings`. Semantic search uses cosine distance and an HNSW `vector_cosine_ops` index. The `postgres_data` named volume keeps data across container restarts.
+The first database startup applies every SQL file in [migrations](migrations).
+Metadata and thumbnail URLs are stored in `videos`; 768-dimensional vectors are
+stored in `video_embeddings`. Semantic search uses cosine distance and an HNSW
+`vector_cosine_ops` index. The `postgres_data` named volume keeps data across
+container restarts.
 
 Inspect the pgvector installation and table definition:
 
@@ -186,7 +204,7 @@ npm run build
 npm run build:node
 ```
 
-The verified build currently passes 12 Python tests, TypeScript lint, the Vinext production build, Docker health checks, and a live browser smoke test.
+The verified build currently passes 13 Python tests, TypeScript lint, the Vinext production build, Docker health checks, and a live browser smoke test.
 
 ## Optional sentence-transformer model
 

@@ -6,6 +6,7 @@ COPY package.json package-lock.json ./
 RUN npm ci
 
 COPY . .
+RUN npm run lint
 RUN npm run build:node
 
 FROM node:22-alpine AS runtime

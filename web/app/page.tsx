@@ -7,6 +7,7 @@ type SearchItem = {
   title: string;
   description: string;
   tags: string[];
+  thumbnail_url: string;
   score: number;
 };
 
@@ -27,17 +28,46 @@ type HealthResponse = {
 
 const QUICK_SEARCHES = [
   'postgresql pgvector semantic search docker',
-  'flutter riverpod architecture',
-  'python api testing containers',
+  'healthy meal prep dinner',
+  'budget saving money',
+  'travel vietnam culture',
 ];
 
 const INITIAL_QUERY = QUICK_SEARCHES[0];
 const SCORE_THRESHOLD = 0.4;
+const SEARCH_HISTORY_KEY = 'smart-video-search-history';
+const MAX_HISTORY_ITEMS = 8;
 
 function scoreBand(score: number) {
   if (score > 0.75) return 'high';
   if (score >= 0.5) return 'medium';
   return 'low';
+}
+
+function nextSearchHistory(current: string[], query: string) {
+  return [
+    query,
+    ...current.filter((item) => item.toLocaleLowerCase() !== query.toLocaleLowerCase()),
+  ].slice(0, MAX_HISTORY_ITEMS);
+}
+
+function readSearchHistory() {
+  try {
+    const stored = JSON.parse(window.localStorage.getItem(SEARCH_HISTORY_KEY) ?? '[]');
+    return Array.isArray(stored)
+      ? stored.filter((item): item is string => typeof item === 'string')
+      : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeSearchHistory(history: string[]) {
+  try {
+    window.localStorage.setItem(SEARCH_HISTORY_KEY, JSON.stringify(history));
+  } catch {
+    // Search still works when browser storage is unavailable.
+  }
 }
 
 export default function Home() {
@@ -48,6 +78,7 @@ export default function Home() {
   const [elapsed, setElapsed] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [searchHistory, setSearchHistory] = useState<string[]>([]);
 
   const runSearch = useCallback(
     async (nextQuery: string) => {
@@ -75,6 +106,11 @@ export default function Home() {
         }
         setResult(payload as SearchResponse);
         setElapsed(Math.max(1, Math.round(performance.now() - startedAt)));
+        setSearchHistory((current) => {
+          const next = nextSearchHistory(current, normalizedQuery);
+          writeSearchHistory(next);
+          return next;
+        });
       } catch (searchError) {
         setError(
           searchError instanceof Error
@@ -87,6 +123,14 @@ export default function Home() {
     },
     [limit],
   );
+
+  useEffect(() => {
+    const historyTimer = window.setTimeout(() => {
+      setSearchHistory(readSearchHistory());
+    }, 0);
+
+    return () => window.clearTimeout(historyTimer);
+  }, []);
 
   useEffect(() => {
     void fetch('/api/status')
@@ -111,6 +155,11 @@ export default function Home() {
   function chooseQuickSearch(value: string) {
     setQuery(value);
     void runSearch(value);
+  }
+
+  function clearSearchHistory() {
+    window.localStorage.removeItem(SEARCH_HISTORY_KEY);
+    setSearchHistory([]);
   }
 
   return (
@@ -186,6 +235,23 @@ export default function Home() {
             </button>
           ))}
         </div>
+
+        {searchHistory.length > 0 && (
+          <div className="quick-searches search-history" aria-label="Recent searches">
+            <span>Recent</span>
+            {searchHistory.map((historyItem) => (
+              <button
+                key={historyItem}
+                onClick={() => chooseQuickSearch(historyItem)}
+              >
+                {historyItem}
+              </button>
+            ))}
+            <button className="clear-history" onClick={clearSearchHistory}>
+              Clear history
+            </button>
+          </div>
+        )}
       </section>
 
       <section className="results-section" aria-live="polite">
@@ -193,7 +259,9 @@ export default function Home() {
           <div>
             <p className="section-kicker">Keyword results</p>
             <h2>
-              {result ? `${result.count} ranked matches` : 'Searching your library'}
+              {result
+                ? `${result.count} ranked ${result.count === 1 ? 'match' : 'matches'}`
+                : 'Searching your library'}
             </h2>
           </div>
           <div className="query-meta">
@@ -221,6 +289,17 @@ export default function Home() {
                 const band = scoreBand(item.score);
                 return (
                   <article className={`result-card ${band}`} key={item.id}>
+                    {item.thumbnail_url && (
+                      <div className="card-image">
+                        {/* Remote seed thumbnails intentionally use direct Unsplash URLs. */}
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={item.thumbnail_url}
+                          alt={`Illustration for ${item.title}`}
+                          loading="lazy"
+                        />
+                      </div>
+                    )}
                     <div className="card-topline">
                       <span className="result-index">
                         {String(index + 1).padStart(2, '0')}

@@ -78,15 +78,22 @@ class PgVectorVideoRepository:
         with self._connection() as connection:
             connection.execute(
                 """
-                INSERT INTO videos (id, title, description, tags)
-                VALUES (%s, %s, %s, %s)
+                INSERT INTO videos (id, title, description, tags, thumbnail_url)
+                VALUES (%s, %s, %s, %s, %s)
                 ON CONFLICT (id) DO UPDATE SET
                     title = EXCLUDED.title,
                     description = EXCLUDED.description,
                     tags = EXCLUDED.tags,
+                    thumbnail_url = EXCLUDED.thumbnail_url,
                     updated_at = NOW()
                 """,
-                (video.id, video.title, video.description, list(video.tags)),
+                (
+                    video.id,
+                    video.title,
+                    video.description,
+                    list(video.tags),
+                    video.thumbnail_url,
+                ),
             )
             connection.execute(
                 """
@@ -104,7 +111,7 @@ class PgVectorVideoRepository:
         with self._connection() as connection:
             row = connection.execute(
                 """
-                SELECT id, title, description, tags
+                SELECT id, title, description, tags, thumbnail_url
                 FROM videos
                 WHERE id = %s
                 """,
@@ -118,6 +125,7 @@ class PgVectorVideoRepository:
             title=row["title"],
             description=row["description"] or "",
             tags=tuple(row["tags"] or ()),
+            thumbnail_url=row["thumbnail_url"] or "",
         )
 
     def semantic_search(
@@ -133,6 +141,7 @@ class PgVectorVideoRepository:
                     video.title,
                     video.description,
                     video.tags,
+                    video.thumbnail_url,
                     embedding.embedding <=> %s AS cosine_distance
                 FROM video_embeddings AS embedding
                 JOIN videos AS video ON video.id = embedding.video_id
@@ -149,6 +158,7 @@ class PgVectorVideoRepository:
                 description=row["description"] or "",
                 tags=tuple(row["tags"] or ()),
                 score=1.0 - float(row["cosine_distance"]),
+                thumbnail_url=row["thumbnail_url"] or "",
             )
             for row in rows
         ]
@@ -171,6 +181,7 @@ class PgVectorVideoRepository:
                         video.title,
                         video.description,
                         video.tags,
+                        video.thumbnail_url,
                         SUM(
                             CASE
                                 WHEN STRPOS(
@@ -187,9 +198,10 @@ class PgVectorVideoRepository:
                         )::double precision / COUNT(*) AS score
                     FROM videos AS video
                     CROSS JOIN query_terms
-                    GROUP BY video.id, video.title, video.description, video.tags
+                    GROUP BY video.id, video.title, video.description, video.tags,
+                             video.thumbnail_url
                 )
-                SELECT id, title, description, tags, score
+                SELECT id, title, description, tags, thumbnail_url, score
                 FROM ranked
                 WHERE score > 0
                 ORDER BY score DESC, id
@@ -205,6 +217,7 @@ class PgVectorVideoRepository:
                 description=row["description"] or "",
                 tags=tuple(row["tags"] or ()),
                 score=float(row["score"]),
+                thumbnail_url=row["thumbnail_url"] or "",
             )
             for row in rows
         ]

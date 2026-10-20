@@ -20,6 +20,7 @@ def index_video():
             title=payload.title,
             description=payload.description,
             tags=tuple(payload.tags),
+            thumbnail_url=payload.thumbnail_url,
         )
     )
     return jsonify(
@@ -28,6 +29,7 @@ def index_video():
             "title": result.title,
             "description": result.description,
             "tags": list(result.tags),
+            "thumbnail_url": result.thumbnail_url,
             "indexed": True,
         }
     ), 201
@@ -46,5 +48,6 @@ def get_video(video_id: UUID):
             "title": video.title,
             "description": video.description,
             "tags": list(video.tags),
+            "thumbnail_url": video.thumbnail_url,
         }
     )

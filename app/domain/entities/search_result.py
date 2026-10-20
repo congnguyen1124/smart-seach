@@ -11,6 +11,7 @@ class SearchCandidate:
     description: str
     tags: tuple[str, ...]
     score: float
+    thumbnail_url: str = ""
 
 
 @dataclass(frozen=True, slots=True)
@@ -20,3 +21,4 @@ class SearchResult:
     description: str
     tags: tuple[str, ...]
     score: float
+    thumbnail_url: str = ""

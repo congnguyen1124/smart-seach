@@ -28,3 +28,4 @@ class IndexVideoRequest:
     title: str
     description: str
     tags: tuple[str, ...]
+    thumbnail_url: str = ""

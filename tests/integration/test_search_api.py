@@ -16,6 +16,7 @@ def test_index_then_search_video(client):
             "title": "Flutter Clean Architecture with Riverpod",
             "description": "Repositories, data sources and view models.",
             "tags": ["flutter", "riverpod", "architecture"],
+            "thumbnail_url": "https://images.unsplash.com/photo-example",
         },
     )
     assert index_response.status_code == 201
@@ -29,6 +30,9 @@ def test_index_then_search_video(client):
     assert payload["count"] == 1
     assert payload["items"][0]["id"] == video_id
     assert payload["items"][0]["score"] > 0
+    assert payload["items"][0]["thumbnail_url"] == (
+        "https://images.unsplash.com/photo-example"
+    )
 
 
 def test_invalid_blank_query_returns_400(client):

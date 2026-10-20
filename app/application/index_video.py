@@ -23,6 +23,7 @@ class IndexVideoUseCase:
             title=request.title,
             description=request.description,
             tags=request.tags,
+            thumbnail_url=request.thumbnail_url,
         )
         searchable_document = self._build_searchable_document(video)
         embedding = self._embedding_provider.embed_document(searchable_document)

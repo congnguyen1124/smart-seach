@@ -10,3 +10,4 @@ class Video:
     title: str
     description: str
     tags: tuple[str, ...]
+    thumbnail_url: str = ""

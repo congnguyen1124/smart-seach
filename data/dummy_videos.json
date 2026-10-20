@@ -3,72 +3,1345 @@
     "id": "11111111-1111-4111-8111-111111111111",
     "title": "PostgreSQL pgvector Semantic Search with Docker",
     "description": "Build a production-minded vector search pipeline with PostgreSQL, pgvector, cosine similarity, and Docker Compose.",
-    "tags": ["postgresql", "pgvector", "semantic", "search", "docker"]
+    "tags": [
+      "postgresql",
+      "pgvector",
+      "semantic",
+      "search",
+      "docker"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
   },
   {
     "id": "22222222-2222-4222-8222-222222222222",
     "title": "Optimizing pgvector Search in PostgreSQL",
     "description": "Tune HNSW indexes and query plans for fast nearest-neighbor retrieval in a PostgreSQL database.",
-    "tags": ["postgresql", "pgvector", "search", "hnsw"]
+    "tags": [
+      "postgresql",
+      "pgvector",
+      "search",
+      "hnsw"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
   },
   {
     "id": "33333333-3333-4333-8333-333333333333",
     "title": "Semantic Search Fundamentals",
     "description": "Understand how embeddings and similarity scores power semantic video discovery.",
-    "tags": ["semantic", "search", "embeddings", "vectors"]
+    "tags": [
+      "semantic",
+      "search",
+      "embeddings",
+      "vectors"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80"
   },
   {
     "id": "44444444-4444-4444-8444-444444444444",
     "title": "Docker Compose for PostgreSQL Development",
     "description": "Run an API and PostgreSQL together with health checks, persistent volumes, and repeatable Docker workflows.",
-    "tags": ["docker", "postgresql", "compose", "devops"]
+    "tags": [
+      "docker",
+      "postgresql",
+      "compose",
+      "devops"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
   },
   {
     "id": "55555555-5555-4555-8555-555555555555",
     "title": "Flutter Clean Architecture with Riverpod",
     "description": "Organize repositories, data sources, use cases, and view models in a maintainable Flutter application.",
-    "tags": ["flutter", "riverpod", "clean-architecture", "mobile"]
+    "tags": [
+      "flutter",
+      "riverpod",
+      "clean-architecture",
+      "mobile"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
   },
   {
     "id": "66666666-6666-4666-8666-666666666666",
     "title": "Designing a Flask REST API",
     "description": "Build versioned endpoints, validate requests, map application use cases, and return consistent JSON responses.",
-    "tags": ["python", "flask", "rest-api", "backend"]
+    "tags": [
+      "python",
+      "flask",
+      "rest-api",
+      "backend"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
   },
   {
     "id": "77777777-7777-4777-8777-777777777777",
     "title": "TypeScript Search Interface from Scratch",
     "description": "Create an accessible search experience with typed responses, responsive result cards, and useful loading states.",
-    "tags": ["typescript", "frontend", "search", "accessibility"]
+    "tags": [
+      "typescript",
+      "frontend",
+      "search",
+      "accessibility"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
   },
   {
     "id": "88888888-8888-4888-8888-888888888888",
     "title": "Understanding Text Embeddings",
     "description": "Learn how sentences become dense vectors and how normalized embeddings improve similarity comparisons.",
-    "tags": ["machine-learning", "embeddings", "vectors", "nlp"]
+    "tags": [
+      "machine-learning",
+      "embeddings",
+      "vectors",
+      "nlp"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80"
   },
   {
     "id": "99999999-9999-4999-8999-999999999999",
     "title": "Testing Python Applications in Containers",
     "description": "Use pytest and containers to verify API behavior, database integration, and persistence across restarts.",
-    "tags": ["python", "pytest", "containers", "testing"]
+    "tags": [
+      "python",
+      "pytest",
+      "containers",
+      "testing"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
   },
   {
     "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
     "title": "Kotlin Coroutines for Android Apps",
     "description": "Structure asynchronous tasks, cancellation, flows, and lifecycle-aware data loading on Android.",
-    "tags": ["kotlin", "android", "coroutines", "mobile"]
+    "tags": [
+      "kotlin",
+      "android",
+      "coroutines",
+      "mobile"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
   },
   {
     "id": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
     "title": "A Weekend Food Guide to Bangkok",
     "description": "Explore markets, street food, coffee shops, and regional Thai dishes across Bangkok neighborhoods.",
-    "tags": ["bangkok", "travel", "food", "thailand"]
+    "tags": [
+      "bangkok",
+      "travel",
+      "food",
+      "thailand"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?auto=format&fit=crop&w=1200&q=80"
   },
   {
     "id": "cccccccc-cccc-4ccc-8ccc-cccccccccccc",
     "title": "Cooking Traditional Vietnamese Pho",
     "description": "Prepare a clear aromatic broth, select rice noodles, and balance herbs for a classic bowl of pho.",
-    "tags": ["vietnamese", "cooking", "pho", "food"]
+    "tags": [
+      "vietnamese",
+      "cooking",
+      "pho",
+      "food"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000001-0000-4000-8000-000000000001",
+    "title": "Build a Monthly Budget That Actually Works",
+    "description": "Create a realistic household budget, track fixed and flexible expenses, and leave room for enjoyment.",
+    "tags": [
+      "personal-finance",
+      "budget",
+      "saving",
+      "money"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000002-0000-4000-8000-000000000002",
+    "title": "Emergency Funds for Real Life",
+    "description": "Choose an emergency fund target and build it gradually without neglecting daily needs.",
+    "tags": [
+      "personal-finance",
+      "emergency-fund",
+      "saving",
+      "planning"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000003-0000-4000-8000-000000000003",
+    "title": "Investing Basics: Index Funds and Risk",
+    "description": "Understand diversification, index funds, compound growth, fees, and long-term investment risk.",
+    "tags": [
+      "investing",
+      "index-funds",
+      "risk",
+      "wealth"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000004-0000-4000-8000-000000000004",
+    "title": "Paying Down Debt with a Clear Plan",
+    "description": "Compare debt snowball and avalanche methods for credit cards, student loans, and personal debt.",
+    "tags": [
+      "debt",
+      "credit",
+      "budget",
+      "financial-planning"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000005-0000-4000-8000-000000000005",
+    "title": "Smart Money Habits for Freelancers",
+    "description": "Plan irregular income, quarterly taxes, business expenses, retirement savings, and lean months.",
+    "tags": [
+      "freelance",
+      "income",
+      "taxes",
+      "saving"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000006-0000-4000-8000-000000000006",
+    "title": "Strength Training for Complete Beginners",
+    "description": "Learn safe movement patterns, progressive overload, recovery, and a simple full-body routine.",
+    "tags": [
+      "fitness",
+      "strength",
+      "beginner",
+      "workout"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000007-0000-4000-8000-000000000007",
+    "title": "Running Your First Comfortable 5K",
+    "description": "Build aerobic fitness with walk-run intervals, pacing, warmups, and injury prevention.",
+    "tags": [
+      "running",
+      "cardio",
+      "5k",
+      "training"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000008-0000-4000-8000-000000000008",
+    "title": "Desk Mobility for Stiff Hips and Shoulders",
+    "description": "Use short mobility breaks to reduce stiffness caused by long hours of sitting.",
+    "tags": [
+      "mobility",
+      "stretching",
+      "desk",
+      "posture"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000009-0000-4000-8000-000000000009",
+    "title": "Home Workouts with Minimal Equipment",
+    "description": "Train strength and endurance using bodyweight, resistance bands, and household space.",
+    "tags": [
+      "home-workout",
+      "bodyweight",
+      "fitness",
+      "exercise"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000010-0000-4000-8000-000000000010",
+    "title": "Recovery, Sleep, and Rest Days",
+    "description": "Understand why sleep, nutrition, easy movement, and rest improve training results.",
+    "tags": [
+      "recovery",
+      "sleep",
+      "fitness",
+      "wellness"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000011-0000-4000-8000-000000000011",
+    "title": "A Five-Minute Mindfulness Practice",
+    "description": "Use breathing and body awareness to create a small, repeatable mindfulness habit.",
+    "tags": [
+      "mindfulness",
+      "meditation",
+      "stress",
+      "wellbeing"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000012-0000-4000-8000-000000000012",
+    "title": "Managing Everyday Anxiety Gently",
+    "description": "Recognize anxious patterns and practice grounding, planning, and supportive self-talk.",
+    "tags": [
+      "anxiety",
+      "mental-health",
+      "grounding",
+      "self-care"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000013-0000-4000-8000-000000000013",
+    "title": "Digital Boundaries for Better Focus",
+    "description": "Reduce notification overload and create healthier routines around phones and social media.",
+    "tags": [
+      "digital-wellbeing",
+      "focus",
+      "boundaries",
+      "habits"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000014-0000-4000-8000-000000000014",
+    "title": "Journaling for Emotional Clarity",
+    "description": "Use simple prompts to name emotions, notice patterns, and process difficult days.",
+    "tags": [
+      "journaling",
+      "emotions",
+      "reflection",
+      "mental-health"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000015-0000-4000-8000-000000000015",
+    "title": "Preventing Burnout Before It Builds",
+    "description": "Spot early signs of burnout and rebalance workload, recovery, boundaries, and support.",
+    "tags": [
+      "burnout",
+      "stress",
+      "work-life-balance",
+      "wellbeing"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000016-0000-4000-8000-000000000016",
+    "title": "How to Listen Without Trying to Fix Everything",
+    "description": "Practice active listening, validation, curiosity, and patient conversation.",
+    "tags": [
+      "relationships",
+      "communication",
+      "listening",
+      "empathy"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000017-0000-4000-8000-000000000017",
+    "title": "Healthy Boundaries with Family and Friends",
+    "description": "Set clear limits while protecting respect, connection, and personal wellbeing.",
+    "tags": [
+      "boundaries",
+      "family",
+      "friendship",
+      "communication"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000018-0000-4000-8000-000000000018",
+    "title": "Planning Meaningful Time as a Couple",
+    "description": "Create simple rituals and shared experiences that strengthen long-term relationships.",
+    "tags": [
+      "couples",
+      "relationships",
+      "connection",
+      "quality-time"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000019-0000-4000-8000-000000000019",
+    "title": "Repairing a Conversation After Conflict",
+    "description": "Use accountability, calm language, and specific next steps after an argument.",
+    "tags": [
+      "conflict",
+      "communication",
+      "relationships",
+      "apology"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000020-0000-4000-8000-000000000020",
+    "title": "Building Adult Friendships in a Busy Life",
+    "description": "Find communities, make invitations, and maintain friendships with realistic effort.",
+    "tags": [
+      "friendship",
+      "community",
+      "social-life",
+      "connection"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000021-0000-4000-8000-000000000021",
+    "title": "Positive Routines for School Mornings",
+    "description": "Design calm, predictable morning routines that help children build independence.",
+    "tags": [
+      "parenting",
+      "children",
+      "routine",
+      "school"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000022-0000-4000-8000-000000000022",
+    "title": "Reading Together from the Early Years",
+    "description": "Make shared reading engaging through questions, repetition, and child-led choices.",
+    "tags": [
+      "parenting",
+      "reading",
+      "literacy",
+      "family"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000023-0000-4000-8000-000000000023",
+    "title": "Helping Children Name Big Feelings",
+    "description": "Teach emotional vocabulary and co-regulation during frustration, worry, and disappointment.",
+    "tags": [
+      "parenting",
+      "emotions",
+      "children",
+      "wellbeing"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000024-0000-4000-8000-000000000024",
+    "title": "Screen Time with Flexible Family Rules",
+    "description": "Create age-aware screen routines around sleep, learning, play, and family connection.",
+    "tags": [
+      "parenting",
+      "screen-time",
+      "children",
+      "digital-wellbeing"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000025-0000-4000-8000-000000000025",
+    "title": "Simple Science Activities at Home",
+    "description": "Explore curiosity with safe experiments using water, light, plants, and kitchen materials.",
+    "tags": [
+      "parenting",
+      "science",
+      "learning",
+      "activities"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000026-0000-4000-8000-000000000026",
+    "title": "Study with Active Recall and Spaced Repetition",
+    "description": "Use retrieval practice and review schedules to remember concepts for longer.",
+    "tags": [
+      "study",
+      "active-recall",
+      "memory",
+      "education"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000027-0000-4000-8000-000000000027",
+    "title": "Learn a New Skill with Small Projects",
+    "description": "Turn tutorials into practical ability through scoped projects and feedback loops.",
+    "tags": [
+      "learning",
+      "projects",
+      "practice",
+      "skills"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000028-0000-4000-8000-000000000028",
+    "title": "Note-Taking for Deep Understanding",
+    "description": "Compare maps, questions, summaries, and evergreen notes for complex subjects.",
+    "tags": [
+      "notes",
+      "study",
+      "knowledge",
+      "education"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000029-0000-4000-8000-000000000029",
+    "title": "Prepare for Exams Without Cramming",
+    "description": "Build a realistic revision plan with practice tests, sleep, and targeted review.",
+    "tags": [
+      "exams",
+      "study-plan",
+      "learning",
+      "students"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000030-0000-4000-8000-000000000030",
+    "title": "Online Learning That Sticks",
+    "description": "Choose good courses, schedule practice, participate actively, and finish what you start.",
+    "tags": [
+      "online-learning",
+      "courses",
+      "habits",
+      "education"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000031-0000-4000-8000-000000000031",
+    "title": "Healthy Weeknight Meals in Thirty Minutes",
+    "description": "Combine vegetables, protein, whole grains, and quick sauces for flexible dinners.",
+    "tags": [
+      "cooking",
+      "healthy-food",
+      "meal-prep",
+      "dinner"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000032-0000-4000-8000-000000000032",
+    "title": "Bread Baking for First-Time Bakers",
+    "description": "Understand yeast, dough hydration, kneading, proofing, shaping, and oven steam.",
+    "tags": [
+      "baking",
+      "bread",
+      "cooking",
+      "beginner"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000033-0000-4000-8000-000000000033",
+    "title": "Vietnamese Home Cooking: Fresh Spring Rolls",
+    "description": "Prepare rice paper rolls with herbs, vegetables, protein, and a balanced dipping sauce.",
+    "tags": [
+      "vietnamese",
+      "spring-rolls",
+      "cooking",
+      "food"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000034-0000-4000-8000-000000000034",
+    "title": "Reduce Food Waste in Your Kitchen",
+    "description": "Plan meals, store produce correctly, freeze leftovers, and cook with scraps.",
+    "tags": [
+      "food-waste",
+      "sustainability",
+      "cooking",
+      "home"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000035-0000-4000-8000-000000000035",
+    "title": "Coffee Brewing Methods Compared",
+    "description": "Compare pour-over, French press, espresso, and cold brew by grind, time, and flavor.",
+    "tags": [
+      "coffee",
+      "brewing",
+      "drinks",
+      "kitchen"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000036-0000-4000-8000-000000000036",
+    "title": "Planning a Budget Trip to Japan",
+    "description": "Estimate transport, lodging, meals, attractions, and regional rail options.",
+    "tags": [
+      "japan",
+      "budget-travel",
+      "planning",
+      "asia"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000037-0000-4000-8000-000000000037",
+    "title": "A Responsible Guide to Mountain Trekking",
+    "description": "Prepare gear, weather plans, navigation, safety, and leave-no-trace practices.",
+    "tags": [
+      "trekking",
+      "mountains",
+      "safety",
+      "outdoors"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000038-0000-4000-8000-000000000038",
+    "title": "Slow Travel Through Central Vietnam",
+    "description": "Explore Hue, Da Nang, Hoi An, local food, beaches, and cultural heritage at an easy pace.",
+    "tags": [
+      "vietnam",
+      "slow-travel",
+      "culture",
+      "food"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000039-0000-4000-8000-000000000039",
+    "title": "Packing Light for a Two-Week Journey",
+    "description": "Build a compact capsule wardrobe and organize essentials in a carry-on bag.",
+    "tags": [
+      "packing",
+      "travel-tips",
+      "minimalism",
+      "luggage"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000040-0000-4000-8000-000000000040",
+    "title": "Solo Travel Safety and Confidence",
+    "description": "Research neighborhoods, protect documents, stay connected, and trust informed instincts.",
+    "tags": [
+      "solo-travel",
+      "safety",
+      "planning",
+      "confidence"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000041-0000-4000-8000-000000000041",
+    "title": "Repairing Small Cracks and Holes in Walls",
+    "description": "Choose filler, prepare surfaces, sand smoothly, and touch up paint for a clean finish.",
+    "tags": [
+      "diy",
+      "home-repair",
+      "walls",
+      "maintenance"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000042-0000-4000-8000-000000000042",
+    "title": "Organize a Small Apartment Room by Room",
+    "description": "Use zones, vertical storage, and regular decluttering to make limited space work.",
+    "tags": [
+      "organization",
+      "small-space",
+      "home",
+      "decluttering"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000043-0000-4000-8000-000000000043",
+    "title": "Beginner Home Electrical Safety",
+    "description": "Identify breakers, outlets, warning signs, and the jobs that require a licensed electrician.",
+    "tags": [
+      "electrical",
+      "safety",
+      "home",
+      "maintenance"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000044-0000-4000-8000-000000000044",
+    "title": "Painting a Room from Preparation to Finish",
+    "description": "Protect surfaces, repair walls, cut clean edges, roll evenly, and avoid common paint mistakes.",
+    "tags": [
+      "painting",
+      "diy",
+      "renovation",
+      "home"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000045-0000-4000-8000-000000000045",
+    "title": "A Seasonal Home Maintenance Checklist",
+    "description": "Schedule roof, plumbing, filters, seals, appliances, and safety checks across the year.",
+    "tags": [
+      "maintenance",
+      "home",
+      "checklist",
+      "safety"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000046-0000-4000-8000-000000000046",
+    "title": "Start a Balcony Herb Garden",
+    "description": "Grow basil, mint, coriander, and rosemary with the right containers, light, and watering.",
+    "tags": [
+      "gardening",
+      "herbs",
+      "balcony",
+      "plants"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000047-0000-4000-8000-000000000047",
+    "title": "Composting Kitchen Scraps at Home",
+    "description": "Balance green and brown materials to create healthy compost without strong odors.",
+    "tags": [
+      "compost",
+      "gardening",
+      "food-waste",
+      "soil"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000048-0000-4000-8000-000000000048",
+    "title": "Grow Tomatoes in Containers",
+    "description": "Choose varieties, containers, supports, sunlight, feeding, and consistent watering.",
+    "tags": [
+      "tomatoes",
+      "container-garden",
+      "vegetables",
+      "gardening"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000049-0000-4000-8000-000000000049",
+    "title": "Houseplant Care for Busy People",
+    "description": "Match resilient plants with indoor light and build a simple watering routine.",
+    "tags": [
+      "houseplants",
+      "indoor-garden",
+      "plant-care",
+      "home"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000050-0000-4000-8000-000000000050",
+    "title": "Create a Pollinator-Friendly Garden",
+    "description": "Plant diverse flowers and provide habitat for bees, butterflies, and helpful insects.",
+    "tags": [
+      "pollinators",
+      "biodiversity",
+      "flowers",
+      "gardening"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000051-0000-4000-8000-000000000051",
+    "title": "Understanding Climate Change in Plain Language",
+    "description": "Connect greenhouse gases, energy balance, extreme weather, mitigation, and adaptation.",
+    "tags": [
+      "climate-change",
+      "science",
+      "environment",
+      "sustainability"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000052-0000-4000-8000-000000000052",
+    "title": "Lower-Waste Grocery Shopping",
+    "description": "Use reusable systems, thoughtful quantities, refill options, and seasonal ingredients.",
+    "tags": [
+      "zero-waste",
+      "shopping",
+      "sustainability",
+      "food"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000053-0000-4000-8000-000000000053",
+    "title": "Solar Energy for Homeowners",
+    "description": "Understand panels, inverters, batteries, roof suitability, costs, and payback estimates.",
+    "tags": [
+      "solar",
+      "renewable-energy",
+      "home",
+      "climate"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000054-0000-4000-8000-000000000054",
+    "title": "Protecting Urban Biodiversity",
+    "description": "Support native plants, connected habitats, clean waterways, and wildlife-friendly cities.",
+    "tags": [
+      "biodiversity",
+      "cities",
+      "wildlife",
+      "environment"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000055-0000-4000-8000-000000000055",
+    "title": "A Practical Guide to Saving Water",
+    "description": "Reduce household water use through leak repair, efficient fixtures, and garden choices.",
+    "tags": [
+      "water",
+      "conservation",
+      "home",
+      "sustainability"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000056-0000-4000-8000-000000000056",
+    "title": "Drawing with Light, Shape, and Shadow",
+    "description": "Train observation through value studies, simple forms, edges, and everyday objects.",
+    "tags": [
+      "drawing",
+      "art",
+      "sketching",
+      "creativity"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000057-0000-4000-8000-000000000057",
+    "title": "Color Theory for Everyday Design",
+    "description": "Use hue, value, saturation, contrast, and harmony in practical visual work.",
+    "tags": [
+      "color-theory",
+      "design",
+      "art",
+      "visual"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000058-0000-4000-8000-000000000058",
+    "title": "Photography Composition Beyond the Rule of Thirds",
+    "description": "Explore balance, layers, repetition, framing, negative space, and visual storytelling.",
+    "tags": [
+      "photography",
+      "composition",
+      "visual-storytelling",
+      "art"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000059-0000-4000-8000-000000000059",
+    "title": "Beginner Watercolor Landscapes",
+    "description": "Control water, mix colors, create washes, and build atmosphere in simple scenes.",
+    "tags": [
+      "watercolor",
+      "painting",
+      "landscape",
+      "art"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000060-0000-4000-8000-000000000060",
+    "title": "Design a Personal Creative Practice",
+    "description": "Protect time, collect ideas, finish small projects, and learn through consistent making.",
+    "tags": [
+      "creativity",
+      "art",
+      "habits",
+      "projects"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000061-0000-4000-8000-000000000061",
+    "title": "Learn Basic Piano Chords",
+    "description": "Build major and minor triads, smooth chord changes, rhythm, and simple accompaniment.",
+    "tags": [
+      "piano",
+      "music",
+      "chords",
+      "beginner"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000062-0000-4000-8000-000000000062",
+    "title": "Home Recording on a Small Budget",
+    "description": "Choose a microphone, treat a room, set gain, record clean takes, and organize sessions.",
+    "tags": [
+      "recording",
+      "audio",
+      "music",
+      "home-studio"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000063-0000-4000-8000-000000000063",
+    "title": "Songwriting from a Simple Idea",
+    "description": "Develop lyrics, melody, chords, contrast, and structure from a small emotional seed.",
+    "tags": [
+      "songwriting",
+      "music",
+      "lyrics",
+      "composition"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000064-0000-4000-8000-000000000064",
+    "title": "Understanding Rhythm and Time Signatures",
+    "description": "Feel pulse, subdivisions, syncopation, and common meters through practical exercises.",
+    "tags": [
+      "rhythm",
+      "music-theory",
+      "timing",
+      "practice"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000065-0000-4000-8000-000000000065",
+    "title": "Build Better Music Practice Habits",
+    "description": "Set specific goals, slow difficult passages, record yourself, and review progress.",
+    "tags": [
+      "music-practice",
+      "habits",
+      "learning",
+      "performance"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000066-0000-4000-8000-000000000066",
+    "title": "Swimming Technique for Efficient Freestyle",
+    "description": "Improve body position, breathing, rotation, catch, and relaxed rhythm in the pool.",
+    "tags": [
+      "swimming",
+      "freestyle",
+      "technique",
+      "fitness"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000067-0000-4000-8000-000000000067",
+    "title": "Football Tactics: Creating Space",
+    "description": "See how width, depth, movement, passing angles, and pressing shape a football match.",
+    "tags": [
+      "football",
+      "tactics",
+      "team-sport",
+      "strategy"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000068-0000-4000-8000-000000000068",
+    "title": "Cycling Longer with Comfort and Safety",
+    "description": "Adjust bike fit, pacing, fueling, road awareness, and essential repair tools.",
+    "tags": [
+      "cycling",
+      "safety",
+      "endurance",
+      "outdoors"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000069-0000-4000-8000-000000000069",
+    "title": "Yoga for Balance and Mobility",
+    "description": "Practice accessible poses that develop steadiness, hip mobility, breathing, and control.",
+    "tags": [
+      "yoga",
+      "balance",
+      "mobility",
+      "wellness"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000070-0000-4000-8000-000000000070",
+    "title": "Hiking Preparation for Changing Weather",
+    "description": "Plan layers, navigation, water, food, turnaround times, and emergency essentials.",
+    "tags": [
+      "hiking",
+      "weather",
+      "safety",
+      "outdoors"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000071-0000-4000-8000-000000000071",
+    "title": "How Stars Are Born and Die",
+    "description": "Follow stellar nurseries, fusion, red giants, supernovae, white dwarfs, and neutron stars.",
+    "tags": [
+      "astronomy",
+      "stars",
+      "space",
+      "science"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000072-0000-4000-8000-000000000072",
+    "title": "The Microbiome and Human Health",
+    "description": "Explore how microbial communities interact with digestion, immunity, diet, and medicine.",
+    "tags": [
+      "biology",
+      "microbiome",
+      "health",
+      "science"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000073-0000-4000-8000-000000000073",
+    "title": "Quantum Physics Without the Hype",
+    "description": "Understand probability, measurement, superposition, and why quantum effects matter.",
+    "tags": [
+      "quantum",
+      "physics",
+      "science",
+      "technology"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000074-0000-4000-8000-000000000074",
+    "title": "Why Weather Forecasts Change",
+    "description": "Learn how observations, models, uncertainty, and local geography shape forecasts.",
+    "tags": [
+      "weather",
+      "climate",
+      "models",
+      "science"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000075-0000-4000-8000-000000000075",
+    "title": "The Science of Sleep and Circadian Rhythms",
+    "description": "Connect light, hormones, sleep pressure, routines, and recovery across the day.",
+    "tags": [
+      "sleep",
+      "circadian-rhythm",
+      "health",
+      "science"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000076-0000-4000-8000-000000000076",
+    "title": "Trade Routes of the Ancient World",
+    "description": "Trace how goods, ideas, religions, and technologies moved along land and sea routes.",
+    "tags": [
+      "history",
+      "trade",
+      "ancient-world",
+      "culture"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000077-0000-4000-8000-000000000077",
+    "title": "A Social History of the Modern City",
+    "description": "See how transport, sanitation, housing, labor, and public space reshaped urban life.",
+    "tags": [
+      "history",
+      "cities",
+      "society",
+      "urban"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000078-0000-4000-8000-000000000078",
+    "title": "Vietnamese History Through Everyday Objects",
+    "description": "Explore ceramics, clothing, tools, food, and family artifacts across changing eras.",
+    "tags": [
+      "vietnam",
+      "history",
+      "culture",
+      "heritage"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000079-0000-4000-8000-000000000079",
+    "title": "How Printing Changed Knowledge",
+    "description": "Follow the spread of books, literacy, science, politics, and public debate after print.",
+    "tags": [
+      "printing",
+      "books",
+      "history",
+      "knowledge"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000080-0000-4000-8000-000000000080",
+    "title": "Preserving Oral Histories in Communities",
+    "description": "Plan respectful interviews, recording, consent, archives, and intergenerational storytelling.",
+    "tags": [
+      "oral-history",
+      "community",
+      "archives",
+      "culture"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000081-0000-4000-8000-000000000081",
+    "title": "Speak More Confidently in a New Language",
+    "description": "Use high-frequency phrases, deliberate practice, feedback, and low-pressure conversations.",
+    "tags": [
+      "language-learning",
+      "speaking",
+      "confidence",
+      "practice"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000082-0000-4000-8000-000000000082",
+    "title": "Write Clear Professional Emails",
+    "description": "Structure subject lines, requests, context, tone, and next actions for busy readers.",
+    "tags": [
+      "writing",
+      "email",
+      "communication",
+      "work"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000083-0000-4000-8000-000000000083",
+    "title": "Public Speaking with a Simple Story Arc",
+    "description": "Organize an opening, tension, evidence, examples, and a memorable conclusion.",
+    "tags": [
+      "public-speaking",
+      "storytelling",
+      "presentation",
+      "communication"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000084-0000-4000-8000-000000000084",
+    "title": "Giving Feedback People Can Use",
+    "description": "Make feedback specific, timely, respectful, and connected to observable behavior.",
+    "tags": [
+      "feedback",
+      "communication",
+      "leadership",
+      "work"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000085-0000-4000-8000-000000000085",
+    "title": "Better Questions for Better Conversations",
+    "description": "Use open questions, follow-ups, reflection, and silence to learn what matters.",
+    "tags": [
+      "questions",
+      "conversation",
+      "listening",
+      "communication"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000086-0000-4000-8000-000000000086",
+    "title": "Plan a Week Around Energy, Not Just Time",
+    "description": "Match focused work, collaboration, errands, and rest to realistic energy patterns.",
+    "tags": [
+      "productivity",
+      "planning",
+      "energy",
+      "work-life"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000087-0000-4000-8000-000000000087",
+    "title": "A Simple System for Managing Tasks",
+    "description": "Capture commitments, choose next actions, review regularly, and limit work in progress.",
+    "tags": [
+      "task-management",
+      "productivity",
+      "planning",
+      "focus"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000088-0000-4000-8000-000000000088",
+    "title": "Deep Work in a Distracting Environment",
+    "description": "Create focus blocks, reduce context switching, define outcomes, and recover attention.",
+    "tags": [
+      "deep-work",
+      "focus",
+      "productivity",
+      "attention"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000089-0000-4000-8000-000000000089",
+    "title": "Build Habits with Tiny Reliable Steps",
+    "description": "Use cues, small actions, environment design, tracking, and compassionate recovery.",
+    "tags": [
+      "habits",
+      "behavior",
+      "consistency",
+      "self-improvement"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000090-0000-4000-8000-000000000090",
+    "title": "Run Meetings That Respect Everyone's Time",
+    "description": "Clarify purpose, prepare decisions, facilitate discussion, and record accountable actions.",
+    "tags": [
+      "meetings",
+      "teamwork",
+      "productivity",
+      "leadership"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000091-0000-4000-8000-000000000091",
+    "title": "Basic Car Maintenance Every Driver Should Know",
+    "description": "Check fluids, tires, lights, wipers, batteries, warning signs, and service intervals.",
+    "tags": [
+      "car",
+      "maintenance",
+      "driving",
+      "safety"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000092-0000-4000-8000-000000000092",
+    "title": "Choosing an Electric Vehicle for Daily Life",
+    "description": "Compare range, charging, battery warranties, efficiency, cost, and typical journeys.",
+    "tags": [
+      "electric-vehicle",
+      "charging",
+      "transport",
+      "sustainability"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000093-0000-4000-8000-000000000093",
+    "title": "City Cycling for New Commuters",
+    "description": "Select routes, signal clearly, manage intersections, carry gear, and lock a bike securely.",
+    "tags": [
+      "bike-commute",
+      "cycling",
+      "city",
+      "safety"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000094-0000-4000-8000-000000000094",
+    "title": "Public Transport Planning for Better Cities",
+    "description": "Understand frequency, reliability, connections, accessibility, and transit-oriented growth.",
+    "tags": [
+      "public-transport",
+      "cities",
+      "mobility",
+      "planning"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000095-0000-4000-8000-000000000095",
+    "title": "Road Trip Preparation and Emergency Basics",
+    "description": "Inspect the vehicle, plan stops, pack essentials, share routes, and handle common roadside issues.",
+    "tags": [
+      "road-trip",
+      "car",
+      "travel",
+      "safety"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000096-0000-4000-8000-000000000096",
+    "title": "Preparing Your Home for a Rescue Dog",
+    "description": "Create a calm transition with safe spaces, predictable routines, training, and patience.",
+    "tags": [
+      "dogs",
+      "rescue",
+      "pet-care",
+      "training"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000097-0000-4000-8000-000000000097",
+    "title": "Understanding Cat Body Language",
+    "description": "Read tails, ears, posture, eyes, vocalization, play, fear, and comfort signals.",
+    "tags": [
+      "cats",
+      "behavior",
+      "pet-care",
+      "communication"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000098-0000-4000-8000-000000000098",
+    "title": "Daily Enrichment for Indoor Pets",
+    "description": "Use scent, puzzles, climbing, play, training, and rotation to prevent boredom.",
+    "tags": [
+      "pets",
+      "enrichment",
+      "wellbeing",
+      "home"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000099-0000-4000-8000-000000000099",
+    "title": "Responsible Wildlife Photography",
+    "description": "Protect distance, habitat, nesting sites, natural behavior, and ethical field practice.",
+    "tags": [
+      "wildlife",
+      "photography",
+      "ethics",
+      "nature"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "10000100-0000-4000-8000-000000000100",
+    "title": "Backyard Birds: Observation for Beginners",
+    "description": "Identify common birds through shape, movement, habitat, calls, and seasonal behavior.",
+    "tags": [
+      "birds",
+      "wildlife",
+      "nature",
+      "observation"
+    ],
+    "thumbnail_url": "https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=1200&q=80"
   }
 ]

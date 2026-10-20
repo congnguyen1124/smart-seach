@@ -28,6 +28,7 @@ class IndexVideoRequestSchema(BaseModel):
     title: str = Field(min_length=1, max_length=300)
     description: str = Field(default="", max_length=10_000)
     tags: list[str] = Field(default_factory=list, max_length=50)
+    thumbnail_url: str = Field(default="", max_length=2_048)
 
     @field_validator("title")
     @classmethod
@@ -41,3 +42,11 @@ class IndexVideoRequestSchema(BaseModel):
     @classmethod
     def normalize_tags(cls, values: list[str]) -> list[str]:
         return [tag.strip() for tag in values if tag.strip()]
+
+    @field_validator("thumbnail_url")
+    @classmethod
+    def validate_thumbnail_url(cls, value: str) -> str:
+        value = value.strip()
+        if value and not value.startswith(("https://", "http://")):
+            raise ValueError("thumbnail_url must use http or https")
+        return value

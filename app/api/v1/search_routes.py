@@ -55,6 +55,7 @@ def search():
                     "title": item.title,
                     "description": item.description,
                     "tags": list(item.tags),
+                    "thumbnail_url": item.thumbnail_url,
                     "score": round(item.score, 4),
                 }
                 for item in result.items

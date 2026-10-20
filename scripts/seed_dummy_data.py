@@ -36,6 +36,7 @@ def seed(source: Path) -> int:
                 title=record["title"],
                 description=record.get("description", ""),
                 tags=tuple(record.get("tags", ())),
+                thumbnail_url=record.get("thumbnail_url", ""),
             )
         )
     return len(records)

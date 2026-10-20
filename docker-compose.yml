@@ -27,7 +27,7 @@ services:
       - "${POSTGRES_PORT}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./migrations/001_init.sql:/docker-entrypoint-initdb.d/001_init.sql:ro
+      - ./migrations:/docker-entrypoint-initdb.d:ro
     healthcheck:
       test:
         - CMD-SHELL
@@ -38,14 +38,35 @@ services:
       start_period: 5s
     restart: unless-stopped
 
-  seed:
-    build: *api-build
-    image: smart-video-search-api:local
-    environment: *api-environment
-    command: ["python", "scripts/seed_dummy_data.py", "data/dummy_videos.json"]
+  migrate:
+    image: pgvector/pgvector:0.8.6-pg17-bookworm
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./migrations:/migrations:ro
+    command:
+      - sh
+      - -c
+      - |
+        for migration in /migrations/*.sql; do
+          psql -v ON_ERROR_STOP=1 -h db -U "$$POSTGRES_USER" -d "$$POSTGRES_DB" -f "$$migration"
+        done
     depends_on:
       db:
         condition: service_healthy
+    restart: "no"
+
+  seed:
+    build: *api-build
+    image: smart-video-search-seed:local
+    environment: *api-environment
+    command: ["python", "scripts/seed_dummy_data.py", "data/dummy_videos.json"]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
     restart: "no"
 
   api:
@@ -55,8 +76,8 @@ services:
       - "${API_PORT}:8000"
     environment: *api-environment
     depends_on:
-      db:
-        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
       seed:
         condition: service_completed_successfully
     init: true
@@ -90,8 +111,8 @@ services:
     environment:
       TEST_DATABASE_URL: ${DATABASE_URL}
     depends_on:
-      db:
-        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
     command: ["pytest", "-q"]
     restart: "no"
 

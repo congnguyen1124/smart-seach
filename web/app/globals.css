@@ -293,6 +293,24 @@ main {
 
 .quick-searches button:hover { border-color: #9ec9ba; color: var(--teal); }
 
+.search-history {
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.search-history button {
+  max-width: 230px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.search-history .clear-history {
+  border-color: transparent;
+  background: transparent;
+  color: #9b6962;
+}
+
 .results-section {
   width: min(1180px, calc(100% - 48px));
   margin: 0 auto;
@@ -368,7 +386,7 @@ main {
 }
 
 .result-card {
-  min-height: 275px;
+  min-height: 430px;
   display: flex;
   flex-direction: column;
   padding: 24px;
@@ -379,6 +397,23 @@ main {
   box-shadow: 0 12px 34px rgba(28, 56, 47, 0.055);
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
+
+.card-image {
+  height: 155px;
+  margin: -24px -24px 18px;
+  overflow: hidden;
+  background: #e7eee9;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 320ms ease;
+}
+
+.result-card:hover .card-image img { transform: scale(1.025); }
 
 .result-card.high { border-top-color: var(--green); }
 .result-card.medium { border-top-color: #e1a321; }
@@ -420,7 +455,7 @@ main {
 .score-badge.low span { color: var(--red); }
 
 .result-card h3 {
-  margin: 21px 0 10px;
+  margin: 18px 0 10px;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 21px;
   font-weight: 600;
